@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Black Ember artisan coffee, crafted for everyday coffee moments.">
+  <title>Black Ember | Artisan Coffee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Black Ember home">
+        <img src="images/belogoa.png" alt="Black Ember">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Toggle menu</span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About Us</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#products">Our Product</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-label="Black Ember featured collection">
+      <div class="hero-slides">
+        <article class="hero-slide is-active">
+          <img src="images/hero1.png" alt="Black Ember House Blend coffee collection">
+        </article>
+        <article class="hero-slide">
+          <img src="images/hero2.png" alt="Black Ember artisan coffee presentation">
+        </article>
+        <article class="hero-slide">
+          <img src="images/hero3.png" alt="Black Ember roasted coffee range">
+        </article>
+      </div>
+
+      <div class="slider-dots" aria-label="Choose a slide">
+        <button class="slider-dot is-active" type="button" aria-label="Show slide 1" aria-current="true"></button>
+        <button class="slider-dot" type="button" aria-label="Show slide 2"></button>
+        <button class="slider-dot" type="button" aria-label="Show slide 3"></button>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="about-image reveal">
+        <img src="images/aboutus.png" alt="Black Ember coffee prepared as an intentional daily ritual">
+      </div>
+
+      <div class="about-copy reveal">
+        <p class="eyebrow">Our Story</p>
+        <h1>Good coffee, made with intention.</h1>
+        <div class="story">
+          <p>At <strong>Black Ember</strong>, we believe coffee should be more than a quick drink — it should be an intentional daily ritual.</p>
+          <p>Our <strong>House Blend</strong> is crafted with carefully selected beans from <strong>East Africa and Latin America</strong>, roasted with care to create a smooth, balanced, and refined flavor.</p>
+          <p>From morning focus to evening unwind, Black Ember is made for those who appreciate coffee with depth, aroma, and character.</p>
+        </div>
+        <p class="signature">Black Ember — crafted for everyday coffee moments.</p>
+      </div>
+    </section>
+
+    <section class="why section" id="why-us">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Why Black Ember</p>
+        <h2>Made with purpose,<br>enjoyed every day.</h2>
+      </div>
+
+      <div class="why-grid">
+        <article class="why-card reveal">
+          <span class="why-number">01</span>
+          <div class="why-image">
+            <img src="images/wu1.png" alt="Small batch roasted Black Ember coffee beans">
+          </div>
+          <h3>Crafted in Small Batches</h3>
+          <p>Every batch is roasted with care to bring out a smooth, balanced flavor and a rich coffee aroma.</p>
+        </article>
+        <article class="why-card reveal">
+          <span class="why-number">02</span>
+          <div class="why-image">
+            <img src="images/wu2.png" alt="Premium coffee blend origins from East Africa and Latin America">
+          </div>
+          <h3>Premium Blend Origins</h3>
+          <p>Our House Blend combines carefully selected beans from East Africa and Latin America, creating a refined taste with depth and character.</p>
+        </article>
+        <article class="why-card reveal">
+          <span class="why-number">03</span>
+          <div class="why-image">
+            <img src="images/wu3.png" alt="Black Ember roast options for every preference">
+          </div>
+          <h3>Roast Options for Every Preference</h3>
+          <p>Whether you prefer Light Roasted, Medium Roasted, or Dark Roasted, Black Ember offers a coffee experience that fits your daily ritual.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="products section" id="products">
+      <div class="section-heading section-heading--center reveal">
+        <p class="eyebrow">The House Blend</p>
+        <h2>Find your roast.</h2>
+        <p class="section-intro">One signature blend, expressed in three distinct roast profiles.</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card reveal" data-product-name="Dark Roasted" data-product-price="19.90" data-stripe-product-id="prod_UfEZjxDNDul7hY" data-stripe-price-id="price_1Tfu5yHzqKH9HNrFExicSFpv">
+          <div class="product-image">
+            <img src="images/product1.png" alt="Black Ember Dark Roasted House Blend">
+          </div>
+          <div class="product-info">
+            <p>Deep &amp; bold</p>
+            <h3>Dark Roasted</h3>
+            <p class="product-price">SGD19.90</p>
+            <div class="product-actions">
+              <label>
+                <span>Quantity</span>
+                <select class="quantity-select" aria-label="Dark Roasted quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </label>
+              <button class="buy-button" type="button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card reveal" data-product-name="Medium Roasted" data-product-price="19.90" data-stripe-product-id="prod_UfEaXkyLvSJ3am" data-stripe-price-id="price_1Tfu6vHzqKH9HNrFJRanX9Kp">
+          <div class="product-image">
+            <img src="images/product2.png" alt="Black Ember Medium Roasted House Blend">
+          </div>
+          <div class="product-info">
+            <p>Smooth &amp; balanced</p>
+            <h3>Medium Roasted</h3>
+            <p class="product-price">SGD19.90</p>
+            <div class="product-actions">
+              <label>
+                <span>Quantity</span>
+                <select class="quantity-select" aria-label="Medium Roasted quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </label>
+              <button class="buy-button" type="button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="product-card reveal" data-product-name="Light Roasted" data-product-price="19.90" data-stripe-product-id="prod_UfEbPfetulw6Oy" data-stripe-price-id="price_1Tfu8GHzqKH9HNrFjGOB2fuv">
+          <div class="product-image">
+            <img src="images/product3.png" alt="Black Ember Light Roasted House Blend">
+          </div>
+          <div class="product-info">
+            <p>Bright &amp; delicate</p>
+            <h3>Light Roasted</h3>
+            <p class="product-price">SGD19.90</p>
+            <div class="product-actions">
+              <label>
+                <span>Quantity</span>
+                <select class="quantity-select" aria-label="Light Roasted quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </label>
+              <button class="buy-button" type="button">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <button class="floating-cart cart-toggle" type="button" aria-label="Open cart">
+    <img src="images/cart.png" alt="">
+    <span class="cart-count" aria-live="polite">0</span>
+  </button>
+
+  <div class="cart-panel" aria-hidden="true">
+    <div class="cart-backdrop" data-cart-close></div>
+    <aside class="cart-drawer" aria-labelledby="cart-title" role="dialog">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Your Cart</p>
+          <h2 id="cart-title">Checkout</h2>
+        </div>
+        <button class="cart-close" type="button" aria-label="Close cart" data-cart-close>&times;</button>
+      </div>
+
+      <div class="cart-items" aria-live="polite"></div>
+
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <strong class="cart-subtotal">SGD0.00</strong>
+        </div>
+        <p class="cart-shipping-note">Shipping is calculated in Stripe. Singapore orders include SGD5.00 shipping. Non-Singapore addresses cannot be shipped.</p>
+        <button class="cart-checkout-button" type="button">Check Out</button>
+        <p class="cart-status" role="status" aria-live="polite"></p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-info">
+      <a class="footer-brand" href="#home">
+        <img src="images/belogoa.png" alt="Black Ember">
+      </a>
+      <div class="footer-group">
+        <h2>Contact Info</h2>
+        <p>Email: <a href="mailto:hello@blackember.coffee">hello@blackember.coffee</a></p>
+        <p>Kuala Lumpur, Malaysia</p>
+      </div>
+      <div class="footer-group">
+        <h2>Opening Hours</h2>
+        <p>Monday to Friday</p>
+        <p>9:00 AM — 6:00 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <p>Follow Us</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><img src="images/ig.png" alt=""></a>
+        <a href="#" aria-label="TikTok"><img src="images/tiktok.png" alt=""></a>
+        <a href="#" aria-label="YouTube"><img src="images/yt.png" alt=""></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
