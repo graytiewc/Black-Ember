@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/create-checkout-session",
+      "destination": "/api/create-checkout-session"
+    }
+  ]
+}
