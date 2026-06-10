@@ -15,6 +15,37 @@ const allowedPriceIds = new Set([
   "price_1Tfu8GHzqKH9HNrFjGOB2fuv"
 ]);
 
+const sitemapPaths = [
+  "/",
+  "/dark-roast.html",
+  "/medium-roast.html",
+  "/light-roast.html"
+];
+
+const getOrigin = (request) => `${request.protocol}://${request.get("host")}`;
+
+app.get("/sitemap.xml", (request, response) => {
+  const origin = getOrigin(request);
+  const urls = sitemapPaths
+    .map((path) => `  <url><loc>${origin}${path}</loc></url>`)
+    .join("\n");
+
+  response.type("application/xml").send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`);
+});
+
+app.get("/robots.txt", (request, response) => {
+  response.type("text/plain").send(`User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /create-checkout-session
+
+Sitemap: ${getOrigin(request)}/sitemap.xml
+`);
+});
+
 app.use(express.json());
 app.use(express.static("."));
 
@@ -47,7 +78,7 @@ app.post("/create-checkout-session", async (request, response) => {
       return;
     }
 
-    const origin = `${request.protocol}://${request.get("host")}`;
+    const origin = getOrigin(request);
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: stripeLineItems,

@@ -78,6 +78,77 @@ document.querySelectorAll(".reveal").forEach((element) => {
   revealObserver.observe(element);
 });
 
+const productGrid = document.querySelector(".product-grid");
+
+if (productGrid) {
+  let dragStartX = 0;
+  let dragStartScrollLeft = 0;
+  let isDragging = false;
+  let hasDragged = false;
+
+  const endProductDrag = (event) => {
+    if (!isDragging) {
+      return;
+    }
+
+    isDragging = false;
+    productGrid.classList.remove("is-dragging");
+
+    if (productGrid.hasPointerCapture(event.pointerId)) {
+      productGrid.releasePointerCapture(event.pointerId);
+    }
+
+    window.setTimeout(() => {
+      hasDragged = false;
+    }, 0);
+  };
+
+  productGrid.addEventListener("pointerdown", (event) => {
+    const isInteractiveTarget = event.target.closest("button, select, input, a, label");
+
+    if (event.pointerType !== "mouse" || event.button !== 0 || isInteractiveTarget) {
+      return;
+    }
+
+    dragStartX = event.clientX;
+    dragStartScrollLeft = productGrid.scrollLeft;
+    isDragging = true;
+    hasDragged = false;
+    productGrid.classList.add("is-dragging");
+    productGrid.setPointerCapture(event.pointerId);
+  });
+
+  productGrid.addEventListener("pointermove", (event) => {
+    if (!isDragging) {
+      return;
+    }
+
+    const dragDistance = event.clientX - dragStartX;
+    hasDragged = hasDragged || Math.abs(dragDistance) > 5;
+
+    if (hasDragged) {
+      event.preventDefault();
+      productGrid.scrollLeft = dragStartScrollLeft - dragDistance;
+    }
+  });
+
+  productGrid.addEventListener("pointerup", endProductDrag);
+  productGrid.addEventListener("pointercancel", endProductDrag);
+  productGrid.addEventListener("dragstart", (event) => event.preventDefault());
+
+  productGrid.addEventListener(
+    "click",
+    (event) => {
+      if (hasDragged) {
+        event.preventDefault();
+        event.stopPropagation();
+        hasDragged = false;
+      }
+    },
+    true
+  );
+}
+
 const cart = {
   count: 0,
   total: 0,
@@ -175,14 +246,33 @@ const getCheckoutLineItems = () => {
 
 document.querySelectorAll(".product-card").forEach((card) => {
   const buyButton = card.querySelector(".buy-button");
-  const quantitySelect = card.querySelector(".quantity-select");
+  const quantityInput = card.querySelector(".quantity-input");
+  const quantityButtons = card.querySelectorAll(".quantity-button");
   const name = card.dataset.productName || "Black Ember Coffee";
   const price = Number(card.dataset.productPrice || 0);
   const productId = card.dataset.stripeProductId || "";
   const priceId = card.dataset.stripePriceId || "";
 
+  quantityButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const change = Number(button.dataset.quantityChange || 0);
+      const currentQuantity = Number(quantityInput?.value || 1);
+      const nextQuantity = Math.min(99, Math.max(1, currentQuantity + change));
+
+      if (quantityInput) {
+        quantityInput.value = String(nextQuantity);
+      }
+    });
+  });
+
   buyButton?.addEventListener("click", () => {
-    const quantity = Number(quantitySelect?.value || 1);
+    const requestedQuantity = Number(quantityInput?.value || 1);
+    const quantity = Math.min(99, Math.max(1, Math.trunc(requestedQuantity) || 1));
+
+    if (quantityInput) {
+      quantityInput.value = String(quantity);
+    }
+
     cart.count += quantity;
     cart.total += price * quantity;
     cart.items[name] = {
